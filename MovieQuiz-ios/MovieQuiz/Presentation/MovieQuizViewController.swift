@@ -2,14 +2,6 @@ import UIKit
 
 final class MovieQuizViewController: UIViewController {
     
-    private var currentQuestionIndex = 0
-    private var correctAnswers = 0
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        show(quiz: convert(model: questions[currentQuestionIndex]))
-    }
-    
     private struct QuizQuestion {
       let image: String
       let text: String
@@ -28,11 +20,77 @@ final class MovieQuizViewController: UIViewController {
       let buttonText: String
     }
     
+    private var currentQuestionIndex = 0
+    private var correctAnswers = 0
+    private let questions: [QuizQuestion] = [
+           QuizQuestion(
+               image: "The Godfather",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: true
+           ),
+           QuizQuestion(
+               image: "The Dark Knight",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: true
+           ),
+           QuizQuestion(
+               image: "Kill Bill",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: true
+           ),
+           QuizQuestion(
+               image: "The Avengers",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: true
+           ),
+           QuizQuestion(
+               image: "Deadpool",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: true
+           ),
+           QuizQuestion(
+               image: "The Green Knight",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: true
+           ),
+           QuizQuestion(
+               image: "Old",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: false
+           ),
+           QuizQuestion(
+               image: "The Ice Age Adventures of Buck Wild",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: false
+           ),
+           QuizQuestion(
+               image: "Tesla",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: false
+           ),
+           QuizQuestion(
+               image: "Vivarium",
+               text: "Рейтинг этого фильма больше чем 6?",
+               correctAnswer: false
+           )
+       ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        show(quiz: convert(model: questions[currentQuestionIndex]))
+        imageView.layer.cornerRadius = 20
+    }
+    
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
         let image = UIImage(named: model.image) ?? UIImage()
         let question = model.text
-        let questionNumber = "\(currentQuestionIndex + 1)/\(questions.count)"
+        let questionNumber: String
         
+        if questions.count == 0 {
+            questionNumber = "0/0"
+        } else {
+            questionNumber = "\(currentQuestionIndex + 1)/\(questions.count)"
+        }
         return QuizStepViewModel(image: image, question: question, questionNumber: questionNumber)
     }
     
@@ -41,6 +99,8 @@ final class MovieQuizViewController: UIViewController {
         imageView.image = step.image
         textLabel.text = step.question
         counterLabel.text = step.questionNumber
+        
+        setButtonsEnabled(true)
     }
     
     private func showAnswerResult(isCorrect: Bool) {
@@ -62,7 +122,7 @@ final class MovieQuizViewController: UIViewController {
     
     private func showNextQuestionOrResults() {
         if currentQuestionIndex == questions.count - 1 {
-            let text = "Ваш результат: \(correctAnswers)/10" // 1
+            let text = "Ваш результат: \(correctAnswers)/10"
             let viewModel = QuizResultsViewModel(title: "Этот раунд окончен!", text: text, buttonText: "Сыграть ещё раз")
             show(quiz: viewModel)
         } else {
@@ -92,13 +152,15 @@ final class MovieQuizViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
         }
     
-    private let questions: [QuizQuestion] = [QuizQuestion(image: "The Godfather", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: true), QuizQuestion(image: "The Dark Knight", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: true), QuizQuestion(image: "Kill Bill", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: true), QuizQuestion(image: "The Avengers", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: true), QuizQuestion(image: "Deadpool", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: true), QuizQuestion(image: "The Green Knight", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: true), QuizQuestion(image: "Old", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: false), QuizQuestion(image: "The Ice Age Adventures of Buck Wild", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: false), QuizQuestion(image: "Tesla", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: false), QuizQuestion(image: "Vivarium", text: "Рейтинг этого фильма больше чем 6?", correctAnswer: false)]
-    
     @IBOutlet weak private var imageView: UIImageView!
     @IBOutlet weak private var textLabel: UILabel!
     @IBOutlet weak private var counterLabel: UILabel!
     
+    @IBOutlet weak private var yesButton: UIButton!
+    @IBOutlet weak private var noButton: UIButton!
+    
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
+        setButtonsEnabled(false)
         if questions[currentQuestionIndex].correctAnswer {
             showAnswerResult(isCorrect: true)
         } else {
@@ -107,10 +169,16 @@ final class MovieQuizViewController: UIViewController {
     }
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
+        setButtonsEnabled(false)
         if questions[currentQuestionIndex].correctAnswer == false {
             showAnswerResult(isCorrect: true)
         } else {
             showAnswerResult(isCorrect: false)
         }
+    }
+    
+    private func setButtonsEnabled(_ isEnabled: Bool) {
+        yesButton.isEnabled = isEnabled
+        noButton.isEnabled = isEnabled
     }
 }
