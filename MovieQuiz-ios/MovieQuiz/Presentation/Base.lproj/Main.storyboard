@@ -26,13 +26,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MbZ-Sz-QdG">
-                                <rect key="frame" x="20" y="58" width="362" height="740.66666666666663"/>
+                                <rect key="frame" x="20" y="58" width="362" height="740"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZA-wE-FfO">
-                                        <rect key="frame" x="0.0" y="0.0" width="362" height="23.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="23.333333333333332"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вопрос:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgF-gB-jB9" userLabel="Question Title Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="326" height="23.666666666666668"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="321.66666666666669" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="20"/>
                                                 <color key="textColor" name="YP White (iOS)"/>
                                                 <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1/10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TE-kp-UAe" userLabel="Index Label">
-                                                <rect key="frame" x="326" y="0.0" width="36" height="23.666666666666668"/>
+                                                <rect key="frame" x="321.66666666666669" y="0.0" width="40.333333333333314" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="20"/>
                                                 <color key="textColor" name="YP White (iOS)"/>
                                                 <nil key="highlightedColor"/>
@@ -56,20 +56,20 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cg2-gQ-Sxn" userLabel="Preview Image">
-                                        <rect key="frame" x="0.0" y="43.666666666666629" width="362" height="543"/>
+                                        <rect key="frame" x="0.0" y="43.333333333333371" width="362" height="543"/>
                                         <color key="backgroundColor" name="YP White (iOS)"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Cg2-gQ-Sxn" secondAttribute="height" multiplier="2:3" id="8zI-Nt-uQq"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг этого фильма меньше, чем 5?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHG-px-crd" userLabel="Question Label">
-                                        <rect key="frame" x="0.0" y="606.66666666666663" width="362" height="54"/>
+                                        <rect key="frame" x="0.0" y="606.33333333333337" width="362" height="53.666666666666629"/>
                                         <fontDescription key="fontDescription" name="YSDisplay-Bold" family="YS Display" pointSize="23"/>
                                         <color key="textColor" name="YP White (iOS)"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="EFS-9G-V0F">
-                                        <rect key="frame" x="0.0" y="680.66666666666663" width="362" height="60"/>
+                                        <rect key="frame" x="0.0" y="680" width="362" height="60"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieL-QM-65M" userLabel="No button">
                                                 <rect key="frame" x="0.0" y="0.0" width="171" height="60"/>
